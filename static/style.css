@@ -1,172 +1,191 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global */
 
 body {
-    font-family: 'Courier New', monospace;
-    background: #1a1a1a;
-    color: #00ff00;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #f5f5f7;
+    color: #1f2933;
     padding: 20px;
 }
 
 h1 {
-    color: #00ff00;
+    color: #111827;
     text-align: center;
     margin-bottom: 20px;
-    font-size: 28px;
-    text-shadow: 0 0 10px #00ff00;
+    font-size: 26px;
+    font-weight: 600;
 }
+
+/* Layout */
 
 .container {
     max-width: 1600px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 500px;
+    grid-template-columns: 1fr 480px;
     gap: 20px;
 }
 
-.left-panel, .panel-section {
-    background: #0a0a0a;
-    border: 2px solid #333;
+/* Panels / Cards */
+
+.left-panel,
+.panel-section {
+    background: #ffffff;
     border-radius: 8px;
-    padding: 20px;
+    padding: 18px 20px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
 }
 
+/* Trainer display */
+
 .trainer-display {
-    background: #0a3d0a;
-    border: 3px solid #00aa00;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.2);
+    background: #f9fafb;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    padding: 14px 16px;
+    margin-bottom: 16px;
 }
 
 .display-line {
-    background: #001a00;
-    border: 2px solid #004400;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-    font-size: 24px;
-    color: #00ff00;
-    text-shadow: 0 0 5px #00ff00;
-    letter-spacing: 2px;
+    background: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    padding: 10px 12px;
+    margin: 8px 0;
+    font-size: 20px;
+    color: #111827;
+    letter-spacing: 1px;
 }
 
 .display-line.top {
-    font-size: 18px;
-    color: #00dd00;
+    font-size: 14px;
+    color: #6b7280;
 }
+
+/* Controls */
 
 .control-group {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin: 15px 0;
+    margin: 12px 0;
 }
 
 .control-group label {
-    color: #00aa00;
-    font-weight: bold;
-}
-
-.control-group input[type="text"] {
-    background: #001a00;
-    border: 2px solid #00aa00;
-    color: #00ff00;
-    padding: 8px;
-    font-family: 'Courier New';
-    border-radius: 3px;
-    width: 100px;
-    font-weight: bold;
-}
-
-.hint {
-    color: #00aa00;
+    color: #374151;
+    font-weight: 500;
     font-size: 14px;
 }
 
-/* Container to hold gutter and textarea side-by-side */
+.control-group input[type="text"] {
+    background: #f9fafb;
+    border: 1px solid #d1d5db;
+    color: #111827;
+    padding: 10px 12px;  /* bigger */
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    border-radius: 4px;
+    width: 120px;        /* bigger */
+    font-size: 14px;     /* bigger */
+}
+
+.hint {
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+/* Code editor */
+
 .editor-container {
     display: flex;
-    background: #0a0a0a;
-    border: 2px solid #333;
-    border-radius: 5px;
-    overflow: hidden; /* Keeps rounded corners clean */
+    background: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
 }
 
-/* The Address Gutter (Left side) */
 .line-numbers {
-    background: #0f1f0f; /* Slightly different green background */
-    color: #008800;      /* Darker green text */
-    padding: 15px 10px;  /* MUST match textarea padding */
+    background: #f3f4f6;
+    color: #9ca3af;
+    padding: 12px 10px;
     text-align: right;
-    border-right: 1px solid #333;
-    font-family: 'Courier New', monospace;
-    font-size: 16px;     /* MUST match textarea */
-    line-height: 1.5;    /* MUST match textarea */
-    min-width: 85px;     /* Width for "FFFF: " */
-    overflow: hidden;    /* Hide scrollbar, we sync via JS */
-    user-select: none;   /* Prevent selecting the addresses */
-    white-space: pre;    /* Preserve newlines */
-}
-
-/* The Code Input (Right side) */
-.code-input {
-    flex: 1;             /* Take remaining width */
-    border: none;        /* Remove individual border */
-    border-radius: 0;
-    padding: 15px;       /* Match gutter padding */
-    font-family: 'Courier New', monospace;
-    font-size: 16px;
+    border-right: 1px solid #e5e7eb;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
     line-height: 1.5;
-    resize: none;        /* Disable resize to keep layout simple */
-    white-space: pre;    /* Prevent text wrapping breaking alignment */
-    overflow-x: auto;    /* Allow horizontal scroll if lines are long */
-    outline: none;
+    min-width: 60px;
+    overflow: hidden;
+    user-select: none;
+    white-space: pre;
 }
-.code-input:focus {
+
+.code-input {
+    flex: 1;
     border: none;
+    padding: 12px;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    resize: none;
+    white-space: pre;
+    overflow-x: auto;
+    outline: none;
+    background: #ffffff;
+    color: #111827;
+}
+
+.code-input:focus {
     outline: none;
 }
 
-.code-input::placeholder { color: #006600; }
+.code-input::placeholder {
+    color: #d1d5db;
+}
+
+/* Buttons */
 
 .controls {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    margin: 20px 0;
+    margin: 16px 0;
 }
 
 button {
-    background: #003300;
-    color: #00ff00;
-    border: 2px solid #00aa00;
-    padding: 12px 24px;
-    font-size: 16px;
-    font-family: 'Courier New';
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 7px 16px;
+    font-size: 14px;
+    font-family: inherit;
     cursor: pointer;
-    border-radius: 5px;
-    transition: all 0.2s;
+    border-radius: 4px;
+    transition: background 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
 }
 
 button:hover {
-    background: #00aa00;
-    color: #000;
-    box-shadow: 0 0 10px #00ff00;
+    background: #1d4ed8;
 }
 
-button:active { transform: scale(0.95); }
+button:active {
+    transform: scale(0.98);
+}
 
 button.danger {
-    background: #330000;
-    border-color: #aa0000;
-    color: #ff0000;
+    background: #ef4444;
 }
 
 button.danger:hover {
-    background: #aa0000;
-    color: #fff;
+    background: #dc2626;
 }
+
+/* Speed control */
 
 .speed-control {
     display: flex;
@@ -177,117 +196,123 @@ button.danger:hover {
 
 input[type="range"] {
     flex: 1;
-    height: 8px;
-    background: #003300;
-    border-radius: 5px;
+    height: 4px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    appearance: none;
 }
+
+/* Right panel */
 
 .right-panel {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
 }
 
 .panel-section h2 {
-    color: #00ff00;
-    font-size: 18px;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
+    color: #111827;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 6px;
+    font-weight: 500;
 }
+
+/* Registers */
 
 .registers-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 8px;
 }
 
 .register {
-    background: #001a00;
-    border: 1px solid #003300;
-    padding: 10px;
-    border-radius: 5px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 6px 8px;
+    border-radius: 4px;
     display: flex;
     justify-content: space-between;
 }
 
 .register-name {
-    color: #00aa00;
-    font-weight: bold;
+    color: #6b7280;
+    font-weight: 500;
+    font-size: 13px;
 }
 
 .register-value {
-    color: #00ff00;
-    font-size: 18px;
+    color: #111827;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .register.highlight {
-    background: #003300;
-    border-color: #00ff00;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
-    animation: pulse 0.8s;
+    background: #dbeafe;
+    border-color: #2563eb;
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
+/* Flags */
 
 .flags-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
+    gap: 6px;
 }
 
 .flag {
-    background: #001a00;
-    border: 1px solid #003300;
-    padding: 8px;
-    border-radius: 3px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 4px;
+    border-radius: 4px;
     text-align: center;
 }
 
 .flag-name {
-    color: #00aa00;
-    font-size: 12px;
+    color: #9ca3af;
+    font-size: 10px;
     display: block;
 }
 
 .flag-value {
-    color: #00ff00;
-    font-size: 16px;
-    font-weight: bold;
+    color: #111827;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .flag.set {
-    background: #003300;
-    border-color: #00ff00;
+    background: #dbeafe;
+    border-color: #2563eb;
 }
+
+/* Memory */
 
 .memory-controls {
     display: flex;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 .memory-controls input {
-    width: 80px; 
-    background: #001a00;
-    border: 1px solid #003300;
-    color: #00ff00;
-    padding: 8px;
-    font-family: 'Courier New';
-    border-radius: 3px;
+    width: 100px;          /* bigger */
+    background: #f9fafb;
+    border: 1px solid #d1d5db;
+    color: #111827;
+    padding: 10px 12px;    /* bigger */
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    border-radius: 4px;
+    font-size: 14px;       /* bigger */
 }
 
 .memory-grid {
-    background: #001a00;
-    border: 1px solid #003300;
-    border-radius: 5px;
-    padding: 10px;
-    font-size: 13px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 12px;
     overflow-x: auto;
-    max-height: 300px;
+    max-height: 280px;
     overflow-y: auto;
 }
 
@@ -297,78 +322,92 @@ input[type="range"] {
 }
 
 .memory-address {
-    color: #00aa00;
+    color: #6b7280;
     width: 60px;
-    margin-right: 10px;
+    margin-right: 8px;
 }
 
 .memory-bytes {
     display: flex;
-    gap: 8px;
+    gap: 6px;
 }
 
 .memory-byte {
-    color: #00ff00;
-    width: 25px;
+    color: #111827;
+    width: 22px;
     text-align: center;
 }
 
+/* Output console */
+
 .output-console {
-    background: #001a00;
-    border: 1px solid #003300;
-    border-radius: 5px;
+    background: #0b1020;
+    border: 1px solid #111827;
+    border-radius: 6px;
     padding: 10px;
-    min-height: 150px;
-    max-height: 250px;
+    min-height: 140px;
+    max-height: 230px;
     overflow-y: auto;
-    font-size: 14px;
+    font-size: 13px;
+    color: #e5e7eb;
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .log-entry {
     margin: 2px 0;
-    padding: 2px 5px;
+    padding: 1px 4px;
 }
 
-.log-entry.error { color: #ff4444; }
-.log-entry.success { color: #00ff00; }
-.log-entry.info { color: #00aaaa; }
+.log-entry.error {
+    color: #fecaca;
+}
 
-/* Modal Styles */
+.log-entry.success {
+    color: #bbf7d0;
+}
+
+.log-entry.info {
+    color: #bfdbfe;
+}
+
+/* Modal */
+
 .modal {
     display: none;
     position: fixed;
     z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.45);
 }
 
 .modal-content {
-    background-color: #0a0a0a;
-    margin: 10% auto;
-    padding: 20px;
-    border: 3px solid #00aa00;
-    border-radius: 10px;
-    width: 500px;
-    color: #00ff00;
+    background-color: #ffffff;
+    margin: 7% auto;
+    padding: 18px 20px;
+    border-radius: 8px;
+    width: 460px;
+    color: #1f2933;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
 }
 
 .close {
-    color: #00ff00;
+    color: #9ca3af;
     float: right;
-    font-size: 28px;
-    font-weight: bold;
+    font-size: 22px;
+    font-weight: 600;
     cursor: pointer;
 }
 
-.close:hover { color: #ff0000; }
+.close:hover {
+    color: #111827;
+}
+
+/* Memory edit */
 
 .mem-edit-controls {
     display: flex;
     gap: 10px;
-    margin: 15px 0;
+    margin: 12px 0;
     align-items: center;
 }
 
@@ -376,25 +415,29 @@ input[type="range"] {
     display: flex;
     gap: 10px;
     align-items: center;
-    margin: 15px 0;
+    margin: 12px 0;
 }
 
 .mem-edit-addr {
-    color: #00aa00;
-    font-size: 18px;
+    color: #111827;
+    font-size: 16px;
     min-width: 60px;
 }
 
 .mem-edit-history {
-    background: #001a00;
-    border: 1px solid #003300;
-    padding: 10px;
-    border-radius: 5px;
-    max-height: 200px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    padding: 8px;
+    border-radius: 6px;
+    max-height: 180px;
     overflow-y: auto;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
+/* Responsive */
+
 @media (max-width: 1200px) {
-    .container { grid-template-columns: 1fr; }
+    .container {
+        grid-template-columns: 1fr;
+    }
 }
