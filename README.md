@@ -165,3 +165,5 @@ Since this project uses a Python backend, you cannot just open `index.html`.
 
 ---
 
+Original project: https://github.com/AbhijithSriram/8086-trainer-emulator (by Abhijith Sriram).
+This is a personal customized UI deployment by John Bosco.
